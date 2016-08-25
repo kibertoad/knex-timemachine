@@ -1,6 +1,6 @@
 {
   "name": "knex-timemachine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Knex Timemachine",
   "maintainers": [
     {
@@ -13,8 +13,7 @@
     "url": "git://github.com/kibertoad/knex-timemachine.git"
   },
   "main": "src/timemachine.js",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "mocha": "^3.0.2",
     "knex": "^0.11.10"
