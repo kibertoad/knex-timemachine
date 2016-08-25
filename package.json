@@ -1,0 +1,22 @@
+{
+  "name": "knex-timemachine",
+  "version": "1.0.0",
+  "description": "Knex Timemachine",
+  "maintainers": [
+    {
+      "name": "igorsavin",
+      "email": "iselwin@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kibertoad/knex-timemachine.git"
+  },
+  "main": "src/timemachine.js",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "mocha": "^3.0.2",
+    "knex": "^0.11.10"
+  }
+}
