@@ -7,9 +7,6 @@ function Timemachine() {
   this.knexUsers;
 }
 
-Timemachine.prototype.startTransaction = startTransaction;
-Timemachine.prototype.rollbackTransaction = rollbackTransaction;
-
 /**
  * Initiates transaction for later rollback. Use it in beforeEach statement as the last statement since it will
  * invoke "done" after completion.
@@ -17,17 +14,18 @@ Timemachine.prototype.rollbackTransaction = rollbackTransaction;
  * @param knex - knex instance that should be used for producing the transaction
  * @param knexUsers - should implement "setKnex" method that accepts Knex instance as a parameter
  */
-function startTransaction(done, knex, knexUsers) {
+Timemachine.prototype.startTransaction = function (done, knex, knexUsers) {
+  var self = this;
   knex.transaction(function (newTrx) {
-    this.trx = newTrx;
-    this.knexUsers = knexUsers;
+    self.trx = newTrx;
+    self.knexUsers = knexUsers;
     for (x in knexUsers) {
       knexUser = knexUsers[x];
       if (typeof knexUser.setKnex !== 'function') {
         throw ("knexUser " + x + " does not implement setKnex function.");
       }
 
-      knexUser.setKnex(trx);
+      knexUser.setKnex(self.trx);
     }
     done();
   })
@@ -42,8 +40,8 @@ function startTransaction(done, knex, knexUsers) {
  * @param done afterEach callback
  * @param knex original knex that should be set back for all users
  */
-function rollbackTransaction(done, knex) {
-  trx.rollback().then(function () {
+Timemachine.prototype.rollbackTransaction = function (done, knex) {
+  this.trx.rollback().then(function () {
     for (x in this.knexUsers) {
       knexUsers[x].setKnex(knex);
     }
