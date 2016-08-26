@@ -1,6 +1,6 @@
 {
   "name": "knex-timemachine",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Knex Timemachine",
   "maintainers": [
     {
@@ -14,6 +14,5 @@
   },
   "main": "src/timemachine.js",
   "devDependencies": {},
-  "dependencies": {
-  }
+  "dependencies": {}
 }
