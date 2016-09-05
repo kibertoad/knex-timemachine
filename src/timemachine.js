@@ -30,7 +30,9 @@ Timemachine.prototype.startTransaction = function (done, knex, knexUsers) {
     done();
   })
     .catch(function (err) {
-      console.log('Error on transaction start: ' + err);
+      if (err) {
+        console.log('Error on transaction start: ' + err);
+      }
     });
 }
 
@@ -48,7 +50,9 @@ Timemachine.prototype.rollbackTransaction = function (done, knex) {
     done();
   })
     .catch(function (err) {
-      console.log('Error on rollback: ' + err);
+      if (err) {
+        console.log('Error on rollback: ' + err);
+      }
     });
 }
 
